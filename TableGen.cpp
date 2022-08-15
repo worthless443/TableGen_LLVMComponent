@@ -27,6 +27,7 @@
 #include "llvm/Support/raw_ostream.h"
 #include "llvm/TableGen/Error.h"
 #include "llvm/MC/MCSymbolCOFF.h"
+//#include "llvm/TableGen/Tree.h"
 
 #include "TableGenBackends.h" // Declares all backends.
 #include "ASTTableGen.h"
@@ -38,7 +39,6 @@
 #include "llvm/Support/Signals.h"
 #include "llvm/TableGen/Error.h"
 #include "llvm/TableGen/Main.h"
-#include "llvm/TableGen/Record.h"
 
 #include<iostream>
 #include<cassert>
@@ -618,11 +618,21 @@ int main(int argc, char **argv) {
  ClangASTNodesEmitter emitter(Records);
  struct llvm::RecordKeeper::Pairs<RecordKeeper::Vec_Ptr,RecordKeeper::Vec_Str> pairs__ =  Records.getClassVec();
  GetInitPtr((*(pairs__.first)).at(0));
- assert(Records.getRecord(StringRef("gg"))!=NULL);
+ Records.CreateTree();
+ auto deref = *Records.getTree().next->next->next;
+ //assert(Records.getRecord(StringRef("gg"))!=NULL);
  //getRawOStream((pairs__.first));
   //std::cout << recs.size();
   //buildTree(strref);
 
+/*
+ myTree tree(pairs__.first->at(0));
+ tree.insert(pairs__.first->at(1));
+ tree.insert(pairs__.first->at(1));
+ //assert(tree.getNextNode()->getNextNode()->record!=NULL);
+ auto n = *tree.next->next->next;
+*/
+ 
   //
  //CreateStringMap(*(pairs__.second));
  // //ostream_d out_d(out, Records);
@@ -631,7 +641,8 @@ int main(int argc, char **argv) {
 
   //std::cout << std::string{recs.at(0)->getName()} << "\n";
   //assert(recs.at(1)!=NULL);
-  emitter.deriveChildTree();
+  //emitter.deriveChildTree();
+  
   return 0;
   return TableGenMain(argv[0], &TgenMain);
   sys::PrintStackTraceOnErrorSignal(argv[0]);

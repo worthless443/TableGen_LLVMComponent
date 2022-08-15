@@ -1,4 +1,4 @@
-INCLUDES=-I../../../llvm/include -I../../../llvm/build/include -I../../include
+INCLUDES=-I../../../llvm/include -I../../../llvm/build/include -I../../include -I./
 LINK_LIBS=-lncurses -ltinfo
 CXX=g++ 
 SRC=ASTTableGen.cpp  ClangDataCollectorsEmitter.cpp  ClangTypeNodesEmitter.cpp  ClangASTNodesEmitter.cpp                            ClangDiagnosticsEmitter.cpp     MveEmitter.cpp   ClangASTPropertiesEmitter.cpp                       ClangOpcodesEmitter.cpp         NeonEmitter.cpp   ClangAttrEmitter.cpp                                ClangOpenCLBuiltinEmitter.cpp   RISCVVEmitter.cpp   ClangCommentCommandInfoEmitter.cpp        ClangOptionDocEmitter.cpp       SveEmitter.cpp  ClangCommentHTMLNamedCharacterReferenceEmitter.cpp  ClangSACheckersEmitter.cpp        ClangCommentHTMLTagsEmitter.cpp ClangSyntaxEmitter.cpp

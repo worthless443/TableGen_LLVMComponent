@@ -6,6 +6,7 @@
 //
 //===----------------------------------------------------------------------===//
 //
+//test
 // These tablegen backends emit Clang AST node tables
 //
 //===----------------------------------------------------------------------===//
@@ -99,7 +100,7 @@ void ClangASTNodesEmitter::deriveChildTree() { //TODO implement own recordkeepin
   assert(!Root && "already computed tree");
   // Emit statements
   //const std::vector<Record*> Stmts = Records.getAllDerivedDefinitionsVec(NodeClassName);
-  const std::vector<Record*> Stmts = Records.getAllDerivedDefinitionsVec();
+  const std::vector<Record*> Stmts = Records.getAllDerivedDefinitionsVec(); //build a tree and get dervied nodes intead
   std::cout << Stmts.size() << "\n";
 
   for (unsigned i = 0, e = Stmts.size(); i != e; ++i) {
